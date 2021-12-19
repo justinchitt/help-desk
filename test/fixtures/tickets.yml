@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  subject: MyString
+  description: MyText
+  created_date: MyString
+  author: MyString
+  status: MyString
+  completed_date: MyString
+  completed_admin: MyString
+  solution: MyText
+  user: one
+  user: one
+
+two:
+  subject: MyString
+  description: MyText
+  created_date: MyString
+  author: MyString
+  status: MyString
+  completed_date: MyString
+  completed_admin: MyString
+  solution: MyText
+  user: two
+  user: two
