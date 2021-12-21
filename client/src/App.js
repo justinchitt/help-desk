@@ -6,6 +6,7 @@ import Navigation from "./Navigation"
 import SubmitTicket from "./SubmitTicket";
 import AllTickets from "./AllTickets";
 import ViewTicket from "./ViewTicket";
+import AdminTickets from "./AdminTickets";
 
 function App() {
 
@@ -71,13 +72,16 @@ function App() {
         <Navigation setUser={setUser} user={user}/>
         <Switch>
           <Route path="/ticketform">
-            {user.admin === false?<SubmitTicket user={user} setUser={setUser} date={date}/>:null}
+            {user.admin === false?<SubmitTicket user={user} setUser={setUser} date={date} setTickets={setTickets}/>:null}
           </Route>
           <Route path="/viewall" >
             {user.admin === false?<AllTickets handleDelete={handleDelete} tickets={tickets}/>:null}
           </Route>
           <Route path="/viewticket/:id" >
             {user.admin === false?<ViewTicket handleDelete={handleDelete} />:null}
+          </Route>
+          <Route path="/tickets" >
+            {user.admin !== false?<AdminTickets user={user}/>:null}
           </Route>
         </Switch>
       </BrowserRouter>

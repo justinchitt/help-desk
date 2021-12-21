@@ -1,6 +1,7 @@
 import {useState} from "react"
 import Signup from "./Signup"
 import Login from "./Login"
+import {Card} from "react-bootstrap"
 
 function LoginSignup ({setUser}) {
 
@@ -11,10 +12,10 @@ function LoginSignup ({setUser}) {
     }
 
     return (
-        <div>
+        <Card style={{width: "25rem"}}>
             {wasClicked ? <Signup setWasClicked={setWasClicked}/> : <Login setUser={setUser}/>}
-            <button id="switch" onClick={handleClick}>{!wasClicked ? "Don't have an account?" : "Already have an account?"}</button>
-        </div>
+            <Card.Footer><button id="switch" onClick={handleClick}>{!wasClicked ? "Don't have an account?" : "Already have an account?"}</button></Card.Footer>
+        </Card>
     )
 }
 

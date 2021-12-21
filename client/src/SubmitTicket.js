@@ -1,7 +1,7 @@
 import {useState} from "react"
 import {Form, Button} from "react-bootstrap"
 
-function SubmitTicket({setUser, user, date}) {
+function SubmitTicket({setUser, user, date, setTickets}) {
 
     const [formData, setFormData] = useState({
         subject: "",
@@ -28,13 +28,8 @@ function SubmitTicket({setUser, user, date}) {
     )
     .then(resp => resp.json())
     .then(created => {
-        setUser(current => {
+        setTickets(current => {
             let newOne = {...current}
-            newOne.tickets.map(element => {
-                if (element.id === created.id) {
-                    return created.id
-                }
-            })
             return ({...current, newOne})
         })
         setFormData({

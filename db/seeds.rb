@@ -18,7 +18,7 @@ sarahbam = User.create(first_name: "Sarahi", last_name: "Barraza", company_code:
 
 
 # Tickets
-Ticket.create(subject: "Internal Server Error", description: "When I try to fetch the current user, I receive unauthorized.", created_date: "11/20/21", author: "Sarahi", status: "completed", completed_admin: "Justin", completed_date: "11/21/21", solution: "The backend team forgot to skip authorization for the show users method, I fixed that.", admin_id: justinchitt.id, submitter_id: sarahbam.id)
-Ticket.create(subject: "Computer Freezing", description: "Every time I open a new tab, my computer takes forever to load the page.", created_date: "11/20/21", author: "Sarahi", submitter_id: sarahbam.id)
+Ticket.create!(subject: "Internal Server Error", description: "When I try to fetch the current user, I receive unauthorized.", created_date: "11/20/21", author: "Sarahi", status: "completed", completed_admin: "Justin", completed_date: "11/21/21", solution: "The backend team forgot to skip authorization for the show users method, I fixed that.", admin_id: justinchitt.id, submitter_id: sarahbam.id)
+Ticket.create!(subject: "Computer Freezing", description: "Every time I open a new tab, my computer takes forever to load the page.", created_date: "11/20/21", author: "Sarahi", submitter_id: sarahbam.id)
 
 puts "Finished seeding, master Chittarath"
