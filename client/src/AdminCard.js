@@ -7,6 +7,8 @@ function AdminCard({ticket, user, setTickets}) {
         status: "processing"
     }
 
+    console.log(userData)
+
     function handleClaim() {
         fetch(`/tickets/claim/${ticket.id}`, {
             method: "PATCH",

@@ -29,7 +29,7 @@ function SubmitTicket({tickets, user, date, setTickets}) {
     )
     .then(resp => resp.json())
     .then(created => {
-        setTickets({...tickets, created})
+        setTickets((current)=>[...current, created])
         setFormData({
             subject: "",
             description: "",

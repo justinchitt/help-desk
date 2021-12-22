@@ -43,6 +43,6 @@ class TicketsController < ApplicationController
     end
 
     def claim_params
-        params.permit(:admin_id, :status)
+        params.permit(:admin_id, :status, :subject, :description, :created_date, :author, :submitter_id, :completed_admin, :completed_date, :solution)
     end
 end

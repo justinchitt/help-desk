@@ -16,7 +16,8 @@ function App() {
   const [tickets, setTickets] = useState([])
 
   useEffect(fetchMe, [])
-  // useEffect(fetchTickets, [])
+  useEffect(fetchTickets, [user])
+
 
   function fetchMe() {
     fetch("/me")
@@ -24,15 +25,16 @@ function App() {
       if (resp.ok) {
         resp.json().then(user => {
           setUser(user)
-          fetchTickets(user)
-          // setTickets(user.tickets)
+          // fetchTickets(user)
         })
       }
     })
   }
 
 
-  function fetchTickets(user) {
+  function fetchTickets() {
+    console.log(user)
+    if(!user){return}
     fetch(user.admin === false?`/tickets/user/${user.id}`:`/tickets/admin/${user.id}`)
     .then(resp => {
       if (resp.ok) {
