@@ -11,4 +11,7 @@ Rails.application.routes.draw do
   get "/ticketadmin", to: "tickets#admin_tickets"
   # patch "/tickets/claim/:id", to "tickets#claim"
   patch "/users/update/:id", to: "users#update"
+
+  get "/tickets/user/:id", to: "tickets#submitter"
+  get "/tickets/admin/:id", to: "tickets#admin"
 end
