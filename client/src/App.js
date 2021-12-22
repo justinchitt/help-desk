@@ -7,6 +7,8 @@ import SubmitTicket from "./SubmitTicket";
 import AllTickets from "./AllTickets";
 import ViewTicket from "./ViewTicket";
 import AdminTickets from "./AdminTickets";
+import Account from "./Account";
+import Claimed from "./Claimed";
 
 function App() {
 
@@ -82,6 +84,12 @@ function App() {
           </Route>
           <Route path="/tickets" >
             {user.admin !== false?<AdminTickets user={user}/>:null}
+          </Route>
+          <Route path="/account">
+            <Account user={user} setUser={setUser}/>
+          </Route>
+          <Route path="/claimed">
+            <Claimed user={user}/>
           </Route>
         </Switch>
       </BrowserRouter>

@@ -12,10 +12,11 @@ function Navigation({setUser, user}) {
 
     return (
         <div>
+            <h1>MyHelpDesk</h1>
             <ul>
                 <Link to="/">Home</Link>
-                {user.admin === false?<Link to="/ticketform">Submit</Link>:<Link to="tickets">Tickets</Link>}
-                {user.admin === false?<Link to="/viewall">All Tickets</Link>:<Link to="claimed">Claimed</Link>}
+                {user.admin === false?<Link to="/ticketform">Submit</Link>:<Link to="/tickets">Tickets</Link>}
+                {user.admin === false?<Link to="/viewall">All Tickets</Link>:<Link to="/claimed">Claimed</Link>}
                 <Link to="/account">Account</Link>
                 <Link to="/" onClick={handleLogout}>Logout</Link>
             </ul>

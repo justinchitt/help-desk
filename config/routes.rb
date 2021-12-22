@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
   get "/ticketadmin", to: "tickets#admin_tickets"
   # patch "/tickets/claim/:id", to "tickets#claim"
+  patch "/users/update/:id", to: "users#update"
 end

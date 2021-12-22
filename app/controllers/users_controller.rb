@@ -3,6 +3,7 @@ class UsersController < ApplicationController
     def create
         user = User.create!(user_params)
         if user.valid?
+            UserMailer.with(user: user).welcome_email.deliver_later
             session[:user_id] = user.id
             render json: user, status: :created
         else
@@ -27,6 +28,12 @@ class UsersController < ApplicationController
             else  
                 render json: {errors: ["User does not exist"]}, status: :not_found 
             end
+        end
+
+        def update
+            user = User.find(params[:id])
+            user.update(user_params)
+            render json: user, status: :ok
         end
 
         private 

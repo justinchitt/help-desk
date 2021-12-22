@@ -4,7 +4,7 @@ import AdminCard from "./AdminCard"
 function AdminTickets({user}) {
     const [tickets, setTickets] = useState([])
 
-    useEffect(fetchTickets, [])
+    useEffect(fetchTickets, [user])
 
     function fetchTickets() {
         fetch("/ticketadmin")
