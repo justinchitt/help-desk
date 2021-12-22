@@ -26,6 +26,16 @@ class TicketsController < ApplicationController
         render json: ticket
     end
 
+    def submitter
+        tickets = Ticket.all.where(submitter_id: params[:id])
+        render json: tickets, status: :ok
+    end
+
+    def admin
+        tickets = Ticket.all.where(admin_id: params[:id])
+        render json: tickets, status: :ok
+    end
+
     private
 
     def ticket_params

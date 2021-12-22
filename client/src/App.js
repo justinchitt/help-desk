@@ -16,6 +16,7 @@ function App() {
   const [tickets, setTickets] = useState([])
 
   useEffect(fetchMe, [])
+  // useEffect(fetchTickets, [])
 
   function fetchMe() {
     fetch("/me")
@@ -23,13 +24,28 @@ function App() {
       if (resp.ok) {
         resp.json().then(user => {
           setUser(user)
-          setTickets(user.tickets)
+          fetchTickets(user)
+          // setTickets(user.tickets)
         })
       }
     })
   }
 
-  console.log(user)
+
+  function fetchTickets(user) {
+    fetch(user.admin === false?`/tickets/user/${user.id}`:`/tickets/admin/${user.id}`)
+    .then(resp => {
+      if (resp.ok) {
+        resp.json().then(ticketAll => {
+          // setUser(user)
+          setTickets(ticketAll)
+        })
+      }
+    })
+  }
+
+  console.log(tickets)
+
 
   let todaysDate = new Date()
   let monthsInNumbers = String(todaysDate.getMonth())
@@ -74,7 +90,7 @@ function App() {
         <Navigation setUser={setUser} user={user}/>
         <Switch>
           <Route path="/ticketform">
-            {user.admin === false?<SubmitTicket user={user} setUser={setUser} date={date} setTickets={setTickets}/>:null}
+            {user.admin === false?<SubmitTicket tickets={tickets} user={user} date={date} setTickets={setTickets}/>:null}
           </Route>
           <Route path="/viewall" >
             {user.admin === false?<AllTickets handleDelete={handleDelete} tickets={tickets}/>:null}
@@ -89,7 +105,7 @@ function App() {
             <Account user={user} setUser={setUser}/>
           </Route>
           <Route path="/claimed">
-            <Claimed user={user}/>
+            <Claimed tickets={tickets}/>
           </Route>
         </Switch>
       </BrowserRouter>

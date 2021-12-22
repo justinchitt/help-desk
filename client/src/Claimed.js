@@ -1,8 +1,8 @@
 import {useEffect, useState} from "react"
 import ClaimedCard from "./ClaimedCard"
 
-function Claimed({user}) {
- let claimedTickets = user.admin_tickets.map(ticket => <ClaimedCard key={ticket.id} ticket={ticket}/>)
+function Claimed({tickets}) {
+ let claimedTickets = tickets.map(ticket => <ClaimedCard key={ticket.id} ticket={ticket}/>)
 
     return (
         <div>
