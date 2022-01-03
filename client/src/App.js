@@ -9,6 +9,7 @@ import ViewTicket from "./ViewTicket";
 import AdminTickets from "./AdminTickets";
 import Account from "./Account";
 import Claimed from "./Claimed";
+import Respond from "./Respond";
 
 function App() {
 
@@ -25,7 +26,6 @@ function App() {
       if (resp.ok) {
         resp.json().then(user => {
           setUser(user)
-          // fetchTickets(user)
         })
       }
     })
@@ -92,7 +92,7 @@ function App() {
         <Navigation setUser={setUser} user={user}/>
         <Switch>
           <Route path="/ticketform">
-            {user.admin === false?<SubmitTicket tickets={tickets} user={user} date={date} setTickets={setTickets}/>:null}
+            {user.admin === false?<SubmitTicket user={user} date={date} setTickets={setTickets}/>:null}
           </Route>
           <Route path="/viewall" >
             {user.admin === false?<AllTickets handleDelete={handleDelete} tickets={tickets}/>:null}
@@ -101,13 +101,16 @@ function App() {
             {user.admin === false?<ViewTicket handleDelete={handleDelete} />:null}
           </Route>
           <Route path="/tickets" >
-            {user.admin !== false?<AdminTickets user={user}/>:null}
+            {user.admin !== false?<AdminTickets setTickets={setTickets} user={user}/>:null}
           </Route>
           <Route path="/account">
             <Account user={user} setUser={setUser}/>
           </Route>
           <Route path="/claimed">
-            <Claimed tickets={tickets}/>
+            {user.admin !== false?<Claimed setTickets={setTickets} tickets={tickets}/>:null}
+          </Route>
+          <Route path="/respond/:id">
+            {user.admin !== false?<Respond setTickets={setTickets} user={user} date={date}/>:null}
           </Route>
         </Switch>
       </BrowserRouter>

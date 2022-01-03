@@ -1,22 +1,24 @@
 import {useEffect, useState} from "react"
 import AdminCard from "./AdminCard"
 
-function AdminTickets({user}) {
-    const [tickets, setTickets] = useState([])
 
+function AdminTickets({user, setTickets}) {
+    const [tickets, setTicketsAdmin] = useState([])
+
+    
     useEffect(fetchTickets, [user])
-
+    
     function fetchTickets() {
         fetch("/ticketadmin")
         .then(resp => resp.json())
-        .then(setTickets)
+        .then(setTicketsAdmin)
     }
-    
-    let ticketCards = tickets.map((ticket) => <AdminCard key={ticket.id} ticket={ticket} user={user} setTickets={setTickets}/>)
+    let ticketCards = tickets.map((ticket) => <AdminCard setTickets={setTickets} key={ticket.id} ticket={ticket} user={user} setTicketsAdmin={setTicketsAdmin}/>)
 
 
     return (
         <div>
+            {!tickets[0]?<p>There are no tickets at this time...</p>:null}
             {ticketCards}
         </div>
     )

@@ -20,7 +20,7 @@ function ViewTicket({handleDelete}) {
             return (
                 <>
                     <Card.Header as="h5">{`${ticket.completed_date} Admin: ${ticket.completed_admin}`}</Card.Header>
-                    <Card.Title>What was done:</Card.Title>
+                    <Card.Title>Action Taken:</Card.Title>
                     <Card.Text>{ticket.solution}</Card.Text>
                 </>
             )

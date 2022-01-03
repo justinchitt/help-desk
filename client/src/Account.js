@@ -1,4 +1,4 @@
-import {Form, Button} from "react-bootstrap"
+import {Form, Button, Card} from "react-bootstrap"
 import {useState} from "react"
 
 function Account({user, setUser}) {
@@ -43,10 +43,12 @@ function Account({user, setUser}) {
 
     return (
         <div>
+            <Card style={{width: '30rem'}}>
+            <Card.Header as="h5">Account Information</Card.Header>
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formFirstName" >
                     <Form.Label>First Name: </Form.Label>
-                    <Form.Control type="text" name="first_name" value={updateData.first_name} onChange={handleChange} />
+                    <Form.Control type="text" name="first_name" value={updateData.first_name} onChange={handleChange} required/>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formLastNameName" >
                     <Form.Label>Last Name: </Form.Label>
@@ -72,8 +74,9 @@ function Account({user, setUser}) {
                     <Form.Label>Password Confirmation: </Form.Label>
                     <Form.Control type="password" name="password_confirmation" value={updateData.password_confirmation} onChange={handleChange}  required/>
                 </Form.Group>
-                <Button variant="primary" type="submit">Update Account</Button>
+                <Button variant="secondary" type="submit">Update Account</Button>
             </Form>
+            </Card>
         </div>
     )
 }

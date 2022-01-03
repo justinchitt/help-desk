@@ -50,31 +50,31 @@ function Signup({setWasClicked}) {
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formFirstName" >
                     <Form.Label>First Name: </Form.Label>
-                    <Form.Control type="text" name="first_name" value={signupData.first_name} onChange={handleChange} />
+                    <Form.Control type="text" name="first_name" value={signupData.first_name} onChange={handleChange} required/>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formLastNameName" >
                     <Form.Label>Last Name: </Form.Label>
-                    <Form.Control type="text" name="last_name" value={signupData.last_name} onChange={handleChange} />
+                    <Form.Control type="text" name="last_name" value={signupData.last_name} onChange={handleChange} required/>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formUsername" >
                     <Form.Label>Username: </Form.Label>
-                    <Form.Control type="text" name="username" value={signupData.username} onChange={handleChange} />
+                    <Form.Control type="text" name="username" value={signupData.username} onChange={handleChange} required/>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formEmail" >
                     <Form.Label>Email: </Form.Label>
-                    <Form.Control type="email" name="email" value={signupData.email} onChange={handleChange} />
+                    <Form.Control type="email" name="email" value={signupData.email} onChange={handleChange} required/>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formCompany" >
                     <Form.Label>Company Code: </Form.Label>
-                    <Form.Control type="text" name="company_code" value={signupData.company_code} onChange={handleChange} />
+                    <Form.Control type="text" name="company_code" value={signupData.company_code} onChange={handleChange} required/>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formPassword" >
                     <Form.Label>Password: </Form.Label>
-                    <Form.Control type="password" name="password" value={signupData.password} onChange={handleChange} />
+                    <Form.Control type="password" name="password" value={signupData.password} onChange={handleChange} required/>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formPasswordConfirmation" >
                     <Form.Label>Password Confirmation: </Form.Label>
-                    <Form.Control type="password" name="password_confirmation" value={signupData.password_confirmation} onChange={handleChange} />
+                    <Form.Control type="password" name="password_confirmation" value={signupData.password_confirmation} onChange={handleChange} required/>
                 </Form.Group>
                 <Button disabled={disable} variant="primary" type="submit">Signup</Button>
             </Form>

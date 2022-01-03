@@ -1,6 +1,6 @@
 import {Card, Button} from "react-bootstrap"
 
-function AdminCard({ticket, user, setTickets}) {
+function AdminCard({ticket, user, setTicketsAdmin, setTickets}) {
 
     let userData = {
         admin_id: user.id,
@@ -16,7 +16,10 @@ function AdminCard({ticket, user, setTickets}) {
             body: JSON.stringify(userData)
         })
         .then(resp => resp.json())
-        .then(claimed => setTickets(current => current.filter(element => element.id !== claimed.id)))
+        .then(claimed => {
+            setTicketsAdmin(current => current.filter(element => element.id !== claimed.id))
+            setTickets(current => [...current, claimed])
+        })
     }
 
     return (

@@ -1,8 +1,9 @@
 import {useEffect, useState} from "react"
 import ClaimedCard from "./ClaimedCard"
 
-function Claimed({tickets}) {
- let claimedTickets = tickets.map(ticket => <ClaimedCard key={ticket.id} ticket={ticket}/>)
+function Claimed({tickets, setTickets}) {
+    let filteredTickets = tickets.filter(ticket => ticket.status !== "completed")
+    let claimedTickets = filteredTickets.map(ticket => <ClaimedCard setTickets={setTickets} key={ticket.id} ticket={ticket}/>)
 
     return (
         <div>

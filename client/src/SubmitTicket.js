@@ -1,8 +1,11 @@
 import {useState} from "react"
-import {Form, Button} from "react-bootstrap"
+import {useHistory} from "react-router-dom"
+import {Form, Button, Card} from "react-bootstrap"
 
-function SubmitTicket({tickets, user, date, setTickets}) {
+function SubmitTicket({user, date, setTickets}) {
     console.log(user)
+
+    const history = useHistory()
 
     const [formData, setFormData] = useState({
         subject: "",
@@ -37,21 +40,27 @@ function SubmitTicket({tickets, user, date, setTickets}) {
             created_date: "",
             submitter_id: ""
         })
+        history.push("/viewall")
     })
     }
 
     return(
         <div onSubmit={handleSubmit}>
-            <Form>
-                <Form.Group className="mb-3" controlId="formSubject" >
-                    <Form.Label>Subject: </Form.Label>
-                    <Form.Control type="text" name="subject" value={formData.subject} onChange={handleChange} />
-                </Form.Group><Form.Group className="mb-3" controlId="formSubject" >
-                    <Form.Label>Description: </Form.Label>
-                    <Form.Control rows={4} as="textarea" name="description" value={formData.description} onChange={handleChange} />
-                </Form.Group>
-                <Button variant="primary" type="submit">Submit</Button>
-            </Form>
+            <Card style={{width: '70rem'}}>
+                <Card.Header as="h5">Create Ticket</Card.Header>
+                <Card.Text>To submit a ticket, add a subject and description of the problem. Be as descriptive as you can be and include error codes if applicable.</Card.Text>
+                <Card.Footer></Card.Footer>
+                <Form>
+                    <Form.Group className="mb-3" controlId="formSubject" >
+                        <Form.Label>Subject: </Form.Label>
+                        <Form.Control type="text" name="subject" value={formData.subject} onChange={handleChange} required/>
+                    </Form.Group><Form.Group className="mb-3" controlId="formSubject" >
+                        <Form.Label>Description: </Form.Label>
+                        <Form.Control rows={4} as="textarea" name="description" value={formData.description} onChange={handleChange} required/>
+                    </Form.Group>
+                    <Button variant="primary" type="submit">Submit</Button>
+                </Form>
+            </Card>
         </div>
     )
 }

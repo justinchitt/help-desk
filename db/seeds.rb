@@ -13,8 +13,8 @@ flatiron = Company.create(name: "Flatiron School", company_code: "WQ123")
 google = Company.create(name: "Google", company_code: "g00gle")
 
 # Users
-justinchitt = User.create(first_name: "Justin", last_name: "Chittarath", company_code: "WQ123", username: "justinchitt", email: "justinchitt@gmail.com", password: "justin1234", password_confirmation: "justin1234", admin: true)
-sarahbam = User.create(first_name: "Sarahi", last_name: "Barraza", company_code: "WQ123", username: "sarahbam", email: "sarahb@gmail.com", password: "sarah1234", password_confirmation: "sarah1234")
+justinchitt = User.create!(first_name: "Justin", last_name: "Chittarath", company_code: "WQ123", username: "justinchitt", email: "justinchitt@gmail.com", password: "justin1234", password_confirmation: "justin1234", admin: true)
+sarahbam = User.create!(first_name: "Sarahi", last_name: "Barraza", company_code: "WQ123", username: "sarahbam", email: "sarahb@gmail.com", password: "sarah1234", password_confirmation: "sarah1234")
 
 
 # Tickets
