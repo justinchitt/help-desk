@@ -1,5 +1,6 @@
 import {Form, Button, Card} from "react-bootstrap"
 import {useState} from "react"
+import Error from "./Error"
 
 function Account({user, setUser}) {
 
@@ -12,6 +13,8 @@ function Account({user, setUser}) {
         email: user.email,
         company_code: user.company_code
     })
+    const [errors, setErrors] = useState()
+    const [success, setSuccess] = useState(false)
 
     function handleChange(e) {
         let key = e.target.name
@@ -27,24 +30,36 @@ function Account({user, setUser}) {
             body: JSON.stringify(updateData)
         }
     )
-    .then(resp => resp.json())
-    .then(user => {
-        setUpdateData({
-            username: "",
-            password: "",
-            first_name: "",
-            last_name: "",
-            password_confirmation: "",
-            email: "",
-            company_code: ""
+    .then(resp => {
+        if (resp.ok) {
+            resp.json().then(user => {
+                setUpdateData({
+                    username: user.username,
+                    password: "",
+                    first_name: user.first_name,
+                    last_name: user.last_name,
+                    password_confirmation: "",
+                    email: user.email,
+                    company_code: user.company_code
+                })
+                setSuccess(true)
         })
-    })
+    } else {
+        resp.json()
+        .then((err) => {
+            setErrors(err.errors)
+            console.log(errors)
+    });
+    }
+})
 }
 
     return (
         <div>
-            <Card style={{width: '30rem'}}>
+            <Card className="awayfromtop" style={{width: '30rem'}}>
             <Card.Header as="h5">Account Information</Card.Header>
+            {errors ? errors.map((err) => (<Error key={err}>{err}</Error>)):null}
+            {success?<div class="alert alert-success" role="alert">Update Successful!</div>:null}
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formFirstName" >
                     <Form.Label>First Name: </Form.Label>
@@ -74,7 +89,9 @@ function Account({user, setUser}) {
                     <Form.Label>Password Confirmation: </Form.Label>
                     <Form.Control type="password" name="password_confirmation" value={updateData.password_confirmation} onChange={handleChange}  required/>
                 </Form.Group>
-                <Button variant="secondary" type="submit">Update Account</Button>
+                <div className="submit">
+                    <Button variant="secondary" type="submit">Update Account</Button>
+                </div>
             </Form>
             </Card>
         </div>

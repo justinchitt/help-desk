@@ -1,13 +1,14 @@
 class UsersController < ApplicationController
     skip_before_action :authenticate_user, only: [:create, :show]
+
     def create
-        user = User.create!(user_params)
+        user = User.create(user_params)
         if user.valid?
-            UserMailer.with(user: user).welcome_email.deliver_later
+            UserMailer.with(user: user).welcome_email.deliver
             session[:user_id] = user.id
             render json: user, status: :created
         else
-            render json: user.errors.full_message, status: :unprocessable_entity
+            render json: {errors: [user.errors.full_messages]}, status: :unprocessable_entity
         end
     end
 
@@ -32,8 +33,10 @@ class UsersController < ApplicationController
 
         def update
             user = User.find(params[:id])
-            user.update(user_params)
+            user.update!(user_params)
             render json: user, status: :ok
+        rescue ActiveRecord::RecordInvalid => invalid
+            render json: {errors: [invalid.record.errors.full_messages]}, status: :unprocessable_entity
         end
 
         private 

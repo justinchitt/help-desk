@@ -27,8 +27,8 @@ function ClaimedCard({ticket, setTickets}) {
 
     return (
         <div>
-            <Card>
-                <Card.Header as="h5">{`${ticket.author} ${ticket.created_date}`}</Card.Header>
+            <Card style={{width: '50rem'}}>
+                <Card.Header as="h5" >{`${ticket.author} ${ticket.created_date}`}</Card.Header>
                 <Card.Body>
                     <Card.Title>{ticket.subject}</Card.Title>
                     <Card.Text>{`Status: ${ticket.status}`}</Card.Text>

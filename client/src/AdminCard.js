@@ -24,7 +24,7 @@ function AdminCard({ticket, user, setTicketsAdmin, setTickets}) {
 
     return (
         <div>
-            <Card>
+            <Card style={{width: '50rem'}}>
             <Card.Header as="h5">{`${ticket.author} ${ticket.created_date}`}</Card.Header>
                 <Card.Body>
                     <Card.Title>{ticket.subject}</Card.Title>

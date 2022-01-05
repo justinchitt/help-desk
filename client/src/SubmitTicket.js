@@ -46,9 +46,9 @@ function SubmitTicket({user, date, setTickets}) {
 
     return(
         <div onSubmit={handleSubmit}>
-            <Card style={{width: '70rem'}}>
-                <Card.Header as="h5">Create Ticket</Card.Header>
-                <Card.Text>To submit a ticket, add a subject and description of the problem. Be as descriptive as you can be and include error codes if applicable.</Card.Text>
+            <Card className="awayfromtop" style={{width: '90rem'}}>
+                <Card.Header as="h3">Create Ticket</Card.Header>
+                <Card.Text id="textsize">To submit a ticket, add a subject and description of the problem. Be as descriptive as you can be and include error codes if applicable.</Card.Text>
                 <Card.Footer></Card.Footer>
                 <Form>
                     <Form.Group className="mb-3" controlId="formSubject" >
@@ -56,9 +56,11 @@ function SubmitTicket({user, date, setTickets}) {
                         <Form.Control type="text" name="subject" value={formData.subject} onChange={handleChange} required/>
                     </Form.Group><Form.Group className="mb-3" controlId="formSubject" >
                         <Form.Label>Description: </Form.Label>
-                        <Form.Control rows={4} as="textarea" name="description" value={formData.description} onChange={handleChange} required/>
+                        <Form.Control rows={8} as="textarea" name="description" value={formData.description} onChange={handleChange} required/>
                     </Form.Group>
-                    <Button variant="primary" type="submit">Submit</Button>
+                    <div className="submit">
+                        <Button variant="primary" type="submit">Submit</Button>
+                    </div>
                 </Form>
             </Card>
         </div>

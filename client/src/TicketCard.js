@@ -13,7 +13,7 @@ function TicketCard({ticket, handleDelete}) {
 
     return (
         <div>
-            <Card style={{width: '40rem'}}>
+            <Card className="center" style={{width: '80rem'}}>
                 <Card.Header as="h5">{`${ticket.created_date} - ${ticket.author} - Completed by: ${adminCompleted()}`}</Card.Header>
                 <Card.Body>
                     <Card.Title>{ticket.subject}</Card.Title>

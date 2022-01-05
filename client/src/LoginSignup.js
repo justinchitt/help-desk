@@ -12,10 +12,13 @@ function LoginSignup ({setUser}) {
     }
 
     return (
-        <Card style={{width: "25rem"}}>
-            {wasClicked ? <Signup setWasClicked={setWasClicked}/> : <Login setUser={setUser}/>}
-            <Card.Footer><button id="switch" onClick={handleClick}>{!wasClicked ? "Don't have an account?" : "Already have an account?"}</button></Card.Footer>
-        </Card>
+        <div id="loginsignup">
+            <h1 id="middle">myHelpDesk.</h1>
+            <Card className="center" style={{width: "25rem"}}>
+                {wasClicked ? <Signup setWasClicked={setWasClicked}/> : <Login setUser={setUser}/>}
+                <Card.Footer id="switch"><button id="bttn" onClick={handleClick}>{!wasClicked ? "Don't have an account?" : "Already have an account?"}</button></Card.Footer>
+            </Card>
+        </div>
     )
 }
 

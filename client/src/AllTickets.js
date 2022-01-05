@@ -1,4 +1,5 @@
 import TicketCard from "./TicketCard"
+import {Card} from "react-bootstrap"
 
 function AllTickets({tickets, handleDelete}) {
     if (!tickets) {
@@ -9,8 +10,12 @@ function AllTickets({tickets, handleDelete}) {
 
     return (
         <div>
-            <h1>Your Tickets</h1>
-            {cards}
+            <Card id="alltickets" style={{width: '90rem'}}>
+                <Card.Header as="h3">Your Tickets</Card.Header>
+                <div id="ticketcards">
+                    {cards}
+                </div>
+            </Card>
         </div>
     )
 }

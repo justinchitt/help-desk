@@ -36,11 +36,6 @@ function Respond({user, date, setTickets}) {
         .then(claimed => {
             setTickets(current => current.filter(previous => {
                 return previous.id !== claimed.id
-                // if (previous.id === claimed.id) {
-                //     return {...previous, ...claimed}
-                // } else {
-                //     return previous
-                // }
             }))
         })
         history.push("/claimed")

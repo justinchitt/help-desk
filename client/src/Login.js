@@ -1,5 +1,6 @@
 import {useState} from "react"
 import {Form, Button} from "react-bootstrap"
+import Error from "./Error"
 
 function Login ({setUser}) {
 
@@ -7,6 +8,7 @@ function Login ({setUser}) {
         username: "",
         password: ""
     })
+    const [errors, setErrors] = useState()
 
     function handleChange(e) {
         let key = e.target.name
@@ -22,18 +24,27 @@ function Login ({setUser}) {
             body: JSON.stringify(loginData)
         }
     )
-    .then(resp => resp.json())
-    .then(user => {
-        setUser(user)
-        setLoginData({
-            username: "",
-            password: ""
-        })
+    .then(resp => {
+        if (resp.ok) {
+            resp.json().then(user => {
+                    setUser(user)
+                    setLoginData({
+                        username: "",
+                        password: ""
+                    })
+                })
+        } else {
+            resp.json()
+            .then((err) => {
+                setErrors(err.errors)
+            });
+        }
     })
-    }
+}
 
     return (
         <div>
+            {errors ? errors.map((err) => (<Error key={err}>{err}</Error>)):null}
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formUsername" >
                     <Form.Label>Username: </Form.Label>
@@ -43,7 +54,9 @@ function Login ({setUser}) {
                         <Form.Label>Password: </Form.Label>
                         <Form.Control type="password" name="password" value={loginData.password} onChange={handleChange} required/>
                 </Form.Group>
-                <Button variant="primary" type="submit">Login</Button>
+                <div className="submit">
+                    <Button variant="primary" type="submit">Login</Button>
+                </div>
             </Form>
         </div>
     )

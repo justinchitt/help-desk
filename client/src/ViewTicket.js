@@ -34,7 +34,7 @@ function ViewTicket({handleDelete}) {
 
     return (
         <div>
-            <Card style={{width: '70rem'}}>
+            <Card className="awayfromtop" style={{width: '80rem'}}>
                 <Card.Header as="h5">{`${ticket.created_date}`}</Card.Header>
                 <Card.Body>
                     <Card.Title>{ticket.subject}</Card.Title>

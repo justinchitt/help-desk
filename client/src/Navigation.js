@@ -1,4 +1,4 @@
-import {Link} from "react-router-dom"
+import {NavLink} from "react-router-dom"
 
 function Navigation({setUser, user}) {
 
@@ -11,14 +11,14 @@ function Navigation({setUser, user}) {
     }
 
     return (
-        <div>
-            <h1>MyHelpDesk</h1>
+        <div id="nav">
+            <h1>myHelpDesk.</h1>
             <ul>
-                <Link to="/">Home</Link>
-                {user.admin === false?<Link to="/ticketform">Submit</Link>:<Link to="/tickets">Tickets</Link>}
-                {user.admin === false?<Link to="/viewall">All Tickets</Link>:<Link to="/claimed">Claimed</Link>}
-                <Link to="/account">Account</Link>
-                <Link to="/" onClick={handleLogout}>Logout</Link>
+                <NavLink to="/">Home</NavLink>
+                {user.admin === false?<NavLink to="/ticketform">Submit</NavLink>:<NavLink to="/tickets">Tickets</NavLink>}
+                {user.admin === false?<NavLink to="/viewall">All Tickets</NavLink>:<NavLink to="/claimed">Claimed</NavLink>}
+                <NavLink to="/account">Account</NavLink>
+                <NavLink to="/" onClick={handleLogout}>Logout</NavLink>
             </ul>
         </div>
     )

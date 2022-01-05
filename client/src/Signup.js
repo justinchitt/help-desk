@@ -1,9 +1,11 @@
 import {useState} from "react"
 import {Form, Button} from "react-bootstrap"
+import Error from "./Error"
 
 function Signup({setWasClicked}) {
 
     const [disable, setDisable] = useState(false)
+    const [errors, setErrors] = useState([])
     
     const [signupData, setSignupData] = useState({
         username: "",
@@ -19,34 +21,48 @@ function Signup({setWasClicked}) {
         let key = e.target.name
         let value = e.target.value
         setSignupData({...signupData, [key]: value})
-        console.log(signupData)
     }
 
     function handleSubmit(e) {
         e.preventDefault()
-        setDisable(true)
         fetch("/signup", {
             method: "POST",
             headers: {"Content-Type":"application/json"},
             body: JSON.stringify(signupData)
         }
-    )
-    .then(resp => resp.json())
-    .then(user => {
-        setSignupData({
-            username: "",
-            password: "",
-            first_name: "",
-            last_name: "",
-            password_confirmation: "",
-            email: "",
-            company_code: ""
-        })
-        setWasClicked(false)
+        )
+        .then(resp => {
+            if (resp.ok) {
+                resp.json().then(user => {
+                    setSignupData({
+                        username: "",
+                        password: "",
+                        first_name: "",
+                        last_name: "",
+                        password_confirmation: "",
+                        email: "",
+                        company_code: ""
+                    })
+                    console.log("i am ok")
+                        setDisable(true)
+                        setWasClicked(false)
+            })
+        } else {
+            resp.json()
+            .then((err) => {
+                setErrors(err.errors)
+                console.log(errors)
+        });
+        }
     })
     }
+
+
     return (
         <div>
+            <div id="errors">
+                {errors.map((err) => (<Error key={err}>{err}</Error>))}
+            </div>
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formFirstName" >
                     <Form.Label>First Name: </Form.Label>
@@ -76,7 +92,9 @@ function Signup({setWasClicked}) {
                     <Form.Label>Password Confirmation: </Form.Label>
                     <Form.Control type="password" name="password_confirmation" value={signupData.password_confirmation} onChange={handleChange} required/>
                 </Form.Group>
-                <Button disabled={disable} variant="primary" type="submit">Signup</Button>
+                <div className="submit">
+                    <Button disabled={disable} variant="primary" type="submit">Signup</Button>
+                </div>
             </Form>
         </div>
     )
