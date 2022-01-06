@@ -10,7 +10,7 @@ function AllTickets({tickets, handleDelete}) {
 
     return (
         <div>
-            <Card id="alltickets" style={{width: '90rem'}}>
+            <Card className="alltickets" style={{width: '90rem'}}>
                 <Card.Header as="h3">Your Tickets</Card.Header>
                 <div id="ticketcards">
                     {cards}

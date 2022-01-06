@@ -58,7 +58,7 @@ body {
     margin-top: 35px;
 }
 
-#alltickets {
+.alltickets {
     margin: auto;
     padding-top: 10px;
     padding-right: 10px;
@@ -93,6 +93,10 @@ body {
 #header {
     text-decoration: none;
     color: black;
+}
+
+#bold {
+    font-weight: 700;
 }
 
 

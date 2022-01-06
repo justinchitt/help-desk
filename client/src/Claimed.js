@@ -8,7 +8,7 @@ function Claimed({tickets, setTickets}) {
 
     return (
         <div>
-            <Card id="alltickets" style={{width: '90rem'}}>
+            <Card className="alltickets" style={{width: '90rem'}}>
             <Card.Header as="h3">Claimed Tickets</Card.Header>
                 {!filteredTickets[0]?<p>You do not have any claimed tickets...</p>:null}
                 {claimedTickets}

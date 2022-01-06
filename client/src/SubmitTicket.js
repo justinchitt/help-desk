@@ -47,7 +47,7 @@ function SubmitTicket({user, date, setTickets}) {
     return(
         <div onSubmit={handleSubmit}>
             <Card className="awayfromtop" style={{width: '90rem'}}>
-                <Card.Header as="h3">Create Ticket</Card.Header>
+                <Card.Header as="h3">Create a Ticket</Card.Header>
                 <Card.Text id="textsize">To submit a ticket, add a subject and description of the problem. Be as descriptive as you can be and include error codes if applicable.</Card.Text>
                 <Card.Footer></Card.Footer>
                 <Form>

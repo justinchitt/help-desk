@@ -19,7 +19,7 @@ function AdminTickets({user, setTickets}) {
 
     return (
         <div>
-            <Card id="alltickets" style={{width: '90rem'}}>
+            <Card className="alltickets" style={{width: '90rem'}}>
                 <Card.Header as="h3">Tickets to be Claimed</Card.Header>
                 {!tickets[0]?<p>There are no tickets to be claimed at this time...</p>:null}
                 {ticketCards}

@@ -10,6 +10,7 @@ import AdminTickets from "./AdminTickets";
 import Account from "./Account";
 import Claimed from "./Claimed";
 import Respond from "./Respond";
+import Home from "./Home";
 
 function App() {
 
@@ -111,6 +112,9 @@ function App() {
           </Route>
           <Route path="/respond/:id">
             {user.admin !== false?<Respond setTickets={setTickets} user={user} date={date}/>:null}
+          </Route>
+          <Route exact path="/">
+            <Home user={user}/>
           </Route>
         </Switch>
       </BrowserRouter>
