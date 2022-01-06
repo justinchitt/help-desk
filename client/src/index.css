@@ -75,4 +75,26 @@ body {
     margin-top: 30px;
 }
 
+.movetoright {
+    margin-left: 4px;
+}
+
+#navlink a{
+    color:rgb(44, 44, 44);
+    margin-right: 7px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+#navlink a:hover{
+    color: rgb(112, 191, 255);
+}
+
+#header {
+    text-decoration: none;
+    color: black;
+}
+
+
+
 

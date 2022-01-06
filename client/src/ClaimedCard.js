@@ -27,14 +27,14 @@ function ClaimedCard({ticket, setTickets}) {
 
     return (
         <div>
-            <Card style={{width: '50rem'}}>
+            <Card className="awayfromtop" style={{width: '80rem'}}>
                 <Card.Header as="h5" >{`${ticket.author} ${ticket.created_date}`}</Card.Header>
                 <Card.Body>
                     <Card.Title>{ticket.subject}</Card.Title>
                     <Card.Text>{`Status: ${ticket.status}`}</Card.Text>
                     <Card.Text>{ticket.description}</Card.Text>
                     <Button onClick={handleRespond} variant="primary">Respond</Button>
-                    <Button variant="secondary" onClick={handleUnclaim}>Unclaim</Button>
+                    <Button className="movetoright" variant="secondary" onClick={handleUnclaim}>Unclaim</Button>
                 </Card.Body>
             </Card>
         </div>

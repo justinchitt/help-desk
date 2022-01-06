@@ -43,7 +43,7 @@ function ViewTicket({handleDelete}) {
                     {adminResponse()}
                     <Card.Footer>
                         <Button onClick={handleDelete} variant="primary">Delete</Button>
-                        <Button variant="secondary" onClick={()=>handleClick(ticket.id)}>Back</Button>
+                        <Button className="movetoright" variant="secondary" onClick={()=>handleClick(ticket.id)}>Back</Button>
                     </Card.Footer>
                 </Card.Body>
             </Card>

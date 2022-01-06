@@ -41,10 +41,14 @@ function Respond({user, date, setTickets}) {
         history.push("/claimed")
     }
 
+    function back() {
+        history.push("/claimed")
+    }
+
     return (
         <div>
-            <Card style={{width: '70rem'}}>
-                <Card.Header as="h5">{`${ticket.created_date} Author: ${ticket.author}`}</Card.Header>
+            <Card className="awayfromtop" style={{width: '80rem'}}>
+                <Card.Header as="h5">{`${ticket.created_date} Author: ${ticket.author}`} </Card.Header>
                 <Card.Body>
                     <Card.Title>{ticket.subject}</Card.Title>
                     <Card.Text>{`STATUS: ${ticket.status}`}</Card.Text>
@@ -56,6 +60,7 @@ function Respond({user, date, setTickets}) {
                                 <Form.Control rows={4} as="textarea" type="text" name="solution" value={formData.solution} onChange={handleChange} required/>
                             </Form.Group>
                             <Button type="submit">Submit</Button>
+                            <Button variant="secondary" className="movetoright" onClick={back}>Back</Button>
                         </Form>
                     </Card.Footer>
                 </Card.Body>

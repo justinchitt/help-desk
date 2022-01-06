@@ -1,7 +1,9 @@
 function Error({ children }) {
+
+    console.log(children)
     return (
         <div class="alert alert-warning" role="alert">
-            {children}
+            {children.map((error) => <p>{error}</p>)}
         </div>
     );
 }

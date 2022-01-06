@@ -20,7 +20,7 @@ function TicketCard({ticket, handleDelete}) {
                     <Card.Text>{`STATUS: ${ticket.status}`}</Card.Text>
                     <Card.Footer>
                         <Button variant="primary" onClick={()=>handleDelete(ticket.id)}>Delete</Button>
-                        {ticket.status === "completed"?<Link to={`viewticket/${ticket.id}`}><Button variant="secondary">View</Button></Link>:null}
+                        {ticket.status === "completed"?<Link to={`viewticket/${ticket.id}`}><Button className="movetoright" variant="secondary">View</Button></Link>:null}
                     </Card.Footer>
                 </Card.Body>
             </Card>

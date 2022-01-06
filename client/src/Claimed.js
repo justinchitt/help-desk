@@ -1,4 +1,5 @@
 import {useEffect, useState} from "react"
+import {Card} from "react-bootstrap"
 import ClaimedCard from "./ClaimedCard"
 
 function Claimed({tickets, setTickets}) {
@@ -7,7 +8,11 @@ function Claimed({tickets, setTickets}) {
 
     return (
         <div>
-            {claimedTickets}
+            <Card id="alltickets" style={{width: '90rem'}}>
+            <Card.Header as="h3">Claimed Tickets</Card.Header>
+                {!filteredTickets[0]?<p>You do not have any claimed tickets...</p>:null}
+                {claimedTickets}
+            </Card>
         </div>
     )
 }

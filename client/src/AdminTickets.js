@@ -1,4 +1,5 @@
 import {useEffect, useState} from "react"
+import {Card} from "react-bootstrap"
 import AdminCard from "./AdminCard"
 
 
@@ -18,8 +19,11 @@ function AdminTickets({user, setTickets}) {
 
     return (
         <div>
-            {!tickets[0]?<p>There are no tickets at this time...</p>:null}
-            {ticketCards}
+            <Card id="alltickets" style={{width: '90rem'}}>
+                <Card.Header as="h3">Tickets to be Claimed</Card.Header>
+                {!tickets[0]?<p>There are no tickets to be claimed at this time...</p>:null}
+                {ticketCards}
+            </Card>
         </div>
     )
 }

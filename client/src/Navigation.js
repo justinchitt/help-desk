@@ -12,8 +12,8 @@ function Navigation({setUser, user}) {
 
     return (
         <div id="nav">
-            <h1>myHelpDesk.</h1>
-            <ul>
+            <NavLink id="header" to="/"><h1>myHelpDesk.</h1></NavLink>
+            <ul id="navlink">
                 <NavLink to="/">Home</NavLink>
                 {user.admin === false?<NavLink to="/ticketform">Submit</NavLink>:<NavLink to="/tickets">Tickets</NavLink>}
                 {user.admin === false?<NavLink to="/viewall">All Tickets</NavLink>:<NavLink to="/claimed">Claimed</NavLink>}
