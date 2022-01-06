@@ -14,4 +14,5 @@ Rails.application.routes.draw do
 
   get "/tickets/user/:id", to: "tickets#submitter"
   get "/tickets/admin/:id", to: "tickets#admin"
+  get "/company/:company_id", to: "companies#name"
 end
