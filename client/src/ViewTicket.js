@@ -31,6 +31,11 @@ function ViewTicket({handleDelete}) {
         history.push("/viewall")
     }
 
+    function sendBack() {
+        handleDelete(ticket.id)
+        history.push("/viewall")
+    }
+
 
     return (
         <div>
@@ -42,7 +47,7 @@ function ViewTicket({handleDelete}) {
                     <Card.Text>{ticket.description}</Card.Text>
                     {adminResponse()}
                     <Card.Footer>
-                        <Button onClick={handleDelete} variant="primary">Delete</Button>
+                        <Button onClick={sendBack} variant="primary">Delete</Button>
                         <Button className="movetoright" variant="secondary" onClick={()=>handleClick(ticket.id)}>Back</Button>
                     </Card.Footer>
                 </Card.Body>
