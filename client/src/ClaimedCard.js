@@ -22,7 +22,7 @@ function ClaimedCard({ticket, setTickets}) {
         .then(resp => resp.json())
         .then(unclaimed => {
             setTickets(current => current.filter((ticket) => unclaimed.id !== ticket.id))
-         })
+        })
     }
 
     return (

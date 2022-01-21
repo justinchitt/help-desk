@@ -7,8 +7,6 @@ function Home({user}) {
     const [company, setCompany] = useState("")
     useEffect(fetchCompany,[user])
 
-    console.log(company)
-
     function fetchCompany() {
         fetch(`company/${user.company_code}`)
         .then(resp => resp.json())

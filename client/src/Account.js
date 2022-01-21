@@ -2,7 +2,7 @@ import {Form, Button, Card} from "react-bootstrap"
 import {useState} from "react"
 import Error from "./Error"
 
-function Account({user, setUser}) {
+function Account({user}) {
 
     const [updateData, setUpdateData] = useState({
         username: user.username,
@@ -20,7 +20,6 @@ function Account({user, setUser}) {
         let key = e.target.name
         let value = e.target.value
         setUpdateData({...updateData, [key]: value})
-        console.log(updateData)
     }
     function handleSubmit(e) {
         e.preventDefault()
@@ -48,7 +47,6 @@ function Account({user, setUser}) {
         resp.json()
         .then((err) => {
             setErrors(err.errors)
-            console.log(errors)
     });
     }
 })

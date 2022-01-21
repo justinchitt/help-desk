@@ -20,7 +20,6 @@ function App() {
   useEffect(fetchMe, [])
   useEffect(fetchTickets, [user])
 
-
   function fetchMe() {
     fetch("/me")
     .then(resp => {
@@ -32,23 +31,17 @@ function App() {
     })
   }
 
-
   function fetchTickets() {
-    console.log(user)
     if(!user){return}
     fetch(user.admin === false?`/tickets/user/${user.id}`:`/tickets/admin/${user.id}`)
     .then(resp => {
       if (resp.ok) {
         resp.json().then(ticketAll => {
-          // setUser(user)
           setTickets(ticketAll)
         })
       }
     })
   }
-
-  console.log(tickets)
-
 
   let todaysDate = new Date()
   let monthsInNumbers = String(todaysDate.getMonth())
@@ -105,7 +98,7 @@ function App() {
             {user.admin !== false?<AdminTickets setTickets={setTickets} user={user}/>:null}
           </Route>
           <Route path="/account">
-            <Account user={user} setUser={setUser}/>
+            <Account user={user}/>
           </Route>
           <Route path="/claimed">
             {user.admin !== false?<Claimed setTickets={setTickets} tickets={tickets}/>:null}

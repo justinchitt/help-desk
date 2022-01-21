@@ -16,7 +16,6 @@ function AdminTickets({user, setTickets}) {
     }
     let ticketCards = tickets.map((ticket) => <AdminCard setTickets={setTickets} key={ticket.id} ticket={ticket} user={user} setTicketsAdmin={setTicketsAdmin}/>)
 
-
     return (
         <div>
             <Card className="alltickets" style={{width: '90rem'}}>

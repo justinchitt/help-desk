@@ -51,7 +51,6 @@ function Signup({setWasClicked}) {
             resp.json()
             .then((err) => {
                 setErrors(err.errors)
-                console.log(errors)
         });
         }
     })

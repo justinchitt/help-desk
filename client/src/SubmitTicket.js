@@ -3,8 +3,6 @@ import {useHistory} from "react-router-dom"
 import {Form, Button, Card} from "react-bootstrap"
 
 function SubmitTicket({user, date, setTickets}) {
-    console.log(user)
-
     const history = useHistory()
 
     const [formData, setFormData] = useState({
@@ -19,7 +17,6 @@ function SubmitTicket({user, date, setTickets}) {
         let key = e.target.name
         let value = e.target.value
         setFormData(current => ({...current, [key]: value}))
-        console.log(formData)
     }
 
     function handleSubmit(e) {

@@ -23,7 +23,6 @@ function Respond({user, date, setTickets}) {
         let key = e.target.name
         let value = e.target.value
         setFormData(current => ({...current, [key]: value}))
-        console.log(formData)
     }
 
     function handleClaim() {

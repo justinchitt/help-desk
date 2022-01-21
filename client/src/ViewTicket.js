@@ -13,8 +13,6 @@ function ViewTicket({handleDelete}) {
         .then(setTicket)
     },[id])
 
-    console.log(ticket)
-
     function adminResponse() {
         if (ticket.status === "completed") {
             return (
