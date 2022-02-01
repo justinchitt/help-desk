@@ -43,7 +43,6 @@ function Signup({setWasClicked}) {
                         email: "",
                         company_code: ""
                     })
-                    console.log("i am ok")
                         setDisable(true)
                         setWasClicked(false)
             })
