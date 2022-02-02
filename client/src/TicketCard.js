@@ -1,7 +1,9 @@
+import {useState} from "react"
 import {Card, Button} from "react-bootstrap"
 import {Link} from "react-router-dom"
 
 function TicketCard({ticket, handleDelete}) {
+    const [wasClicked, setWasClicked] = useState(false)
 
     function adminCompleted() {
         if (ticket.completed_admin) {
@@ -11,6 +13,10 @@ function TicketCard({ticket, handleDelete}) {
         }
     }
 
+    function handleWasClicked() {
+        setWasClicked(current => !current)
+    }
+
     return (
         <div>
             <Card className="center" style={{width: '80rem'}}>
@@ -18,9 +24,11 @@ function TicketCard({ticket, handleDelete}) {
                 <Card.Body>
                     <Card.Title>{ticket.subject}</Card.Title>
                     <Card.Text>{`STATUS: ${ticket.status}`}</Card.Text>
+                    {wasClicked?<Card.Text>{ticket.description}</Card.Text>:null}
                     <Card.Footer>
                         <Button variant="primary" onClick={()=>handleDelete(ticket.id)}>Delete</Button>
-                        {ticket.status === "completed"?<Link to={`viewticket/${ticket.id}`}><Button className="movetoright" variant="secondary">View</Button></Link>:null}
+                        <Button variant="secondary" className="movetoright" onClick={handleWasClicked}>{!wasClicked?"Preview":"Hide"}</Button>
+                        {ticket.status === "completed"?<Link to={`viewticket/${ticket.id}`}><Button className="movetoright" variant="warning">View</Button></Link>:null}
                     </Card.Footer>
                 </Card.Body>
             </Card>
